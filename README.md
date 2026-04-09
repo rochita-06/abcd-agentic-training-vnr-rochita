@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>🚀 NextGen AI Resume Screening</h1>
+  <h1> NextGen AI Resume Screening</h1>
   <p>An intelligent recruitment platform connecting a modern Next.js applicant portal to an AI-powered n8n automation engine to automatically assess, score, and manage applicant resumes.</p>
 </div>
 
@@ -55,8 +55,6 @@ Ensure you have `Node.js` installed on your machine.
 - [Framer Motion API Docs](https://www.framer.com/motion/)
 
 ## 8. Recording
-Check out our seamless UI interaction recording capturing the live drag-and-drop mechanics below.
-*(Since this is a local project, embed your downloaded media recording here!)*
 `<video src="./public/assets/resume_app_demo.webp" controls="controls" muted="muted" width="800"></video>`
 
 ## 9. Screenshots
