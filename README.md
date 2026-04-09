@@ -37,3 +37,57 @@ graph TD;
     UpdateAPI -.->|Push AI Status Result| Database
     Database -.->|Read Sync| Dashboard[Next.js HR Dashboard]
     Recruiter([HR Recruiter]) -->|Review Pipeline| Dashboard
+```
+
+## 6. How to Run in Local
+Ensure you have `Node.js` installed on your machine.
+1. **Clone the Repository & Install Dependencies**
+   ```bash
+   cd resume-app
+   npm install
+   ```
+2. **Configure Environment Variables**
+   Create a [.env.local](cci:7://file:///C:/Users/rochi/OneDrive/Desktop/agentic%20ai/resume-app/.env.local:0:0-0:0) file in the root directory and provide your n8n Production Webhook URL mapping:
+   ```env
+   N8N_WEBHOOK_URL="https://your-instance.app.n8n.cloud/webhook/resume-upload"
+   ```
+3. **Run Development Server**
+   ```bash
+   npm run dev
+   ```
+   - Open `http://localhost:3000` to interact with the Candidate Portal.
+   - Open `http://localhost:3000/hr` to view the Recruiter Dashboard.
+
+## 7. References and Resources Used
+- [Next.js Documentation](https://nextjs.org/docs)
+- [n8n Webhook Documentation](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.webhook/)
+- [Tailwind CSS Customization](https://tailwindcss.com/docs/)
+- [Framer Motion API Docs](https://www.framer.com/motion/)
+
+## 8. Recording
+Check out our seamless UI interaction recording capturing the live drag-and-drop mechanics below.
+*(Since this is a local project, embed your downloaded media recording here!)*
+`<video src="./public/assets/resume_app_demo.webp" controls="controls" muted="muted" width="800"></video>`
+
+## 9. Screenshots
+
+### Candidate Submission Portal
+![Candidate Submit UI](./public/screenshots/upload_zone.png)
+*(A sleek upload portal built using react-dropzone and glassmorphism styling)*
+
+### HR Real-time AI Dashboard
+![HR Pipeline](./public/screenshots/hr_dashboard.png)
+*(Tracking Candidates and AI Match scores in real-time)*
+
+## 10. Proper Formatting and Alignment
+- **Markdown Semantics**: Utilized standard GitHub Flavored Markdown (GFM) logic for headings, bold emphasis, tables, and nested lists.
+- **Visual Spacing**: Guaranteed consistent line-breaks between conceptual boundaries alongside HTML-based `<br />` alignment tags for the logo header.
+- **Embedded Languages**: Provided strict language tags on code blocks (e.g., `bash`, `env`, `mermaid`) ensuring accurate syntax highlighting for reviewers.
+
+## 11. Problems that you faced and its solutions
+| Problem Faced | Solution Implemented |
+| :--- | :--- |
+| **Framer Motion Integration Type Clashes** <br> `react-dropzone` exposed properties that directly clashed with Framer Motion typings inside component tags. | Prevented inline merging by splitting dropzone `div` bindings (`getRootProps`) entirely apart from the main `motion.div` wrapper, fixing the type conflict. |
+| **n8n Production Endpoints 404ing** <br> Using a standard n8n webhook URL caused Next.js requests to abruptly fail with Node server errors due to workflow inactivity blockages. | Addressed this by enforcing workflow activation logic; standardizing n8n test webhooks versus production webhooks and providing explicit instructions to swap out the URL parameters or toggle workflow "Active" status. |
+| **Volatile Data Passing** <br> React re-renders were erasing the Candidate Email form state if an arbitrary network error threw during the upload operation. | Decoupled UI state constraints inside [UploadZone.tsx](cci:7://file:///C:/Users/rochi/OneDrive/Desktop/agentic%20ai/resume-app/src/components/UploadZone.tsx:0:0-0:0) so the Email field forcibly remains cached and visibly rendered across both `idle` and `error` status blocks, preventing lost candidate inputs. |
+| **Stateless Prototyping Limitations** <br> Without a SQL database configured, the HR Pipeline lacked the capability to sync live statuses sent back from n8n webhooks. | Engineered a robust, low-latency filesystem JSON database layer inside `src/data/db.json` enabling asynchronous syncing of webhooks that perfectly emulates a Production DB. |
