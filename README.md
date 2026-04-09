@@ -26,18 +26,8 @@ We built an end-to-end "NextGen Recruiter" AI-powered candidate screening platfo
 - **Automation Engine**: n8n Cloud Webhooks & Workflow Nodes
 
 ## 5. Architecture Diagram
-```mermaid
-graph TD;
-    Applicant([Applicant]) -->|Submit Resume & Email| Frontend[Next.js App Portal]
-    Frontend -->|POST formData| UploadAPI[/api/upload]
-    UploadAPI -->|Multipart Webhook Request| n8n([n8n Cloud Engine])
-    n8n -->|Parse & AI Match Resume| n8n
-    n8n -->|HTTP POST Match Score| UpdateAPI[/api/update-status]
-    UploadAPI -.->|Init Pending Status| Database[(Local db.json)]
-    UpdateAPI -.->|Push AI Status Result| Database
-    Database -.->|Read Sync| Dashboard[Next.js HR Dashboard]
-    Recruiter([HR Recruiter]) -->|Review Pipeline| Dashboard
-```
+<img width="1566" height="688" alt="Gemini_Generated_Image_9225979225979225" src="https://github.com/user-attachments/assets/897076ea-6998-4bb1-82ef-ef657c66be6d" />
+
 
 ## 6. How to Run in Local
 Ensure you have `Node.js` installed on your machine.
@@ -70,14 +60,12 @@ Check out our seamless UI interaction recording capturing the live drag-and-drop
 `<video src="./public/assets/resume_app_demo.webp" controls="controls" muted="muted" width="800"></video>`
 
 ## 9. Screenshots
+<img width="1307" height="621" alt="Screenshot 2026-04-09 231829" src="https://github.com/user-attachments/assets/2910cc65-24c6-4440-b896-658f37af9cb2" />
+<img width="1651" height="913" alt="Screenshot 2026-04-09 204648" src="https://github.com/user-attachments/assets/14a3eb75-dc15-4916-bf6a-dad586e6684b" />
+<img width="1606" height="708" alt="Screenshot 2026-04-09 143040" src="https://github.com/user-attachments/assets/732fff42-54c2-41b3-8b51-6662499fb9bf" />
 
-### Candidate Submission Portal
-![Candidate Submit UI](./public/screenshots/upload_zone.png)
-*(A sleek upload portal built using react-dropzone and glassmorphism styling)*
 
-### HR Real-time AI Dashboard
-![HR Pipeline](./public/screenshots/hr_dashboard.png)
-*(Tracking Candidates and AI Match scores in real-time)*
+
 
 ## 10. Proper Formatting and Alignment
 - **Markdown Semantics**: Utilized standard GitHub Flavored Markdown (GFM) logic for headings, bold emphasis, tables, and nested lists.
