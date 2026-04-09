@@ -55,7 +55,7 @@ Ensure you have `Node.js` installed on your machine.
 - [Framer Motion API Docs](https://www.framer.com/motion/)
 
 ## 8. Recording
-`<video src="./public/assets/resume_app_demo.webp" controls="controls" muted="muted" width="800"></video>`
+<video src="./public/assets/resume_app_demo.webp" controls="controls" muted="muted" width="800"></video>
 
 ## 9. Screenshots
 <img width="1307" height="621" alt="Screenshot 2026-04-09 231829" src="https://github.com/user-attachments/assets/2910cc65-24c6-4440-b896-658f37af9cb2" />
